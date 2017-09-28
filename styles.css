@@ -1,0 +1,54 @@
+﻿h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+body {
+    background-color:#eeeeee
+}
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+    /*background-color:red !important;*/
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+}
+.container {
+    background-color:white;
+    width:70%;
+}
+
+ ul#nav li a:hover,ul#nav li.active a{
+    color:blue;
+}
+a {
+ color:darkgray; 
+ background-color:white !important;
+}
+#navbarNavDropdown {
+background-color:white ;
+padding:30px;
+}
+.form-control {
+    height:50px !important;
+}
+.btn-default {
+    color: white;
+    background-color: #2399e5;
+    width: 150px;
+    float:right;
+    margin-bottom: 30px;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 20px !important;
+}
+.table>tbody>tr, .table>tfoot>tr, .table>thead>tr{
+    padding: 20px !important;
+}
+.pagination>li>a, .pagination>li>span {
+   
+    color: grey !important;
+    
+}

@@ -1,0 +1,131 @@
+﻿<div class="container">
+    <!--form validation    https://embed.plnkr.co/iK5M1vYqYOY0ucpYwnHh/-->
+    <!--action="/action_page.php"[formGroup]="requestItemForm"-->
+    <form style="padding:30px; "
+          #f="ngForm"
+          novalidate
+          [formGroup]="requestItemForm"
+          action="http://jmir.azurewebsites.net/confirm.php" method="post">
+        <div class="form-group">
+            <label for="name">NAME</label>
+            <span style="color:red">*</span>
+            <input type="text"
+                   class="form-control"
+                   id="name"
+                   formControlName="name"
+                   required>
+            <!--<control-messages [control]="requestItemForm.controls.name"></control-messages>-->
+
+        </div>
+        
+        <div *ngIf="requestItemForm.controls.name.invalid && (requestItemForm.controls.name.dirty || requestItemForm.controls.name.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="requestItemForm.controls.name.hasError('required')">
+                Name is required.
+            </div>
+            <div *ngIf="requestItemForm.controls.name.errors.minlength">
+                Name must be at least 2 characters long.
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            <label for="province">PROVINCE</label>
+            <span style="color:red">*</span>
+            <select formControlName="province"
+                    type="text"
+                    class="form-control"
+                    id="province">
+                <option value="">Please select a province</option>
+                <option *ngFor="let p of provinces"
+                        value="{{p}}">
+                    {{p}}
+                </option>
+            </select>
+        </div>
+        <!--error msg for province-->
+        <div *ngIf="requestItemForm.controls.province.invalid &&
+          (requestItemForm.controls.province.dirty || requestItemForm.controls.province.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="requestItemForm.controls.province.hasError('required')">
+                Province is required.
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="telephone">TELEPHONE</label>
+                <span style="color:red">*</span>
+                <input type="text"
+                       class="form-control"
+                       id="telephone"
+                       formControlName="telephone">
+            </div>
+            <!--{{requestItemForm.controls.name.hasError('pattern')}}-->
+            <div class="form-group col-md-6">
+                <label for="postal_code">POSTAL CODE</label>
+                <span style="color:red">*</span>
+                <input type="text"
+                       class="form-control"
+                       id="postal_code"
+                       formControlName="postal_code">
+            </div>
+        </div>
+        <!--error msg for telephone-->
+        <div *ngIf="requestItemForm.controls.telephone.invalid && (requestItemForm.controls.telephone.dirty || requestItemForm.controls.telephone.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="requestItemForm.controls.telephone.hasError('required')">
+                Telephone is required.
+            </div>
+            <div *ngIf="requestItemForm.controls.telephone.errors.pattern">
+                Telephone pattern should be (416)123-4567 or 416-123-4567.
+            </div>
+
+        </div>
+        <!--error msg for postal code-->
+        <!--requestItemForm.controls.postal_code.invalid && (requestItemForm.controls.postal_code.dirty || requestItemForm.controls.postal_code.touched)
+    invalid{{requestItemForm.controls.postal_code.errors.invalid}}
+
+    dirty{{requestItemForm.controls.postal_code.dirty}}
+    touched{{requestItemForm.controls.postal_code.touched}}-->
+
+        <div *ngIf="requestItemForm.controls.postal_code.invalid && (requestItemForm.controls.postal_code.dirty || requestItemForm.controls.postal_code.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="requestItemForm.controls.postal_code.hasError('required')">
+                Postal code is required.
+            </div>
+            <div *ngIf="requestItemForm.controls.postal_code.errors.pattern">
+                Postal code pattern should be M5G 2G8 or M5G2G8.
+            </div>
+
+        </div>
+        <!--Salary-->
+        <div class="form-group">
+            <label for="salary">SALARY</label>
+            <span style="color:red">*</span>
+            <input type="text"
+                   class="form-control"
+                   id="salary"
+                   formControlName="salary">
+        </div>
+        <!--error msg for Salary-->
+        <div *ngIf="requestItemForm.controls.salary.invalid && (requestItemForm.controls.salary.dirty || requestItemForm.controls.salary.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="requestItemForm.controls.salary.hasError('required')">
+                Salary is required.
+            </div>
+            <div *ngIf="requestItemForm.controls.salary.errors.pattern">
+                Salary pattern should be 40,000.00 or 40000.00 or 40000 .
+            </div>
+
+        </div>
+        <!--"-->
+        <button type="submit" class="btn btn-default" (click)="save()" >SAVE</button>
+    </form>
+    <!--{{ requestItemForm.value | json }}-->
+   </div>
